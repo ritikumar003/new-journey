@@ -6,16 +6,16 @@ class user:
         self._email=email
         self._password=password
 
-    def get_mail(self):
-        print(f"Email accessed at {datetime.now()}")
-        return self._email
-    
-    def set_email(self,new_email):
-        self._email=new_email
+        @property
+        def email(self):
+            return self._email
+        
+        @email.setter
+        def email(self,new_email):
+            if "@" in new_email:
+                self._email=new_email
 
-
-user1=user("ritik","ritik@gmail.com","rkosiuu")
-print(user1.get_mail())
-
-user1.set_email("undertaker@gmail.com")
-print(user1.get_mail())
+        
+user1=user("ritik","ritikgmail.com","rkosiuu")
+user1.email="this is not @ an email"
+print(user1.email)
