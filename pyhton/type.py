@@ -1,5 +1,5 @@
 name="RITIK"
 age=77
 
-print(type(name))
+print(name.lower())
 print(type(age))
