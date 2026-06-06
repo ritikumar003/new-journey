@@ -1,21 +1,26 @@
-from datetime import datetime
+class bankaccount:
+    MIN_BALANCE = 100
 
-class user:
-    def __init__(self,username,email,password):
-        self.username=username
-        self._email=email
-        self._password=password
+    def __init__(self,owner,balance=100):
+        self.owner=owner
+        self._balance=balance
+        pass
 
-        @property
-        def email(self):
-            return self._email
-        
-        @email.setter
-        def email(self,new_email):
-            if "@" in new_email:
-                self._email=new_email
+    def deposit(self,amount):
+        if amount>0:
+            self._balance+=amount
+            print(f"{self.owner}'s balance is: {self._balance}")
 
-        
-user1=user("ritik","ritikgmail.com","rkosiuu")
-user1.email="this is not @ an email"
-print(user1.email)
+        else:
+            print("deposit amount should be positive")
+            
+
+    @staticmethod
+    def is_valid_interest_rate(rate):
+        return 0<= rate <=5
+    
+account = bankaccount("kyrie",500)
+account.deposit(200)
+
+print(bankaccount.is_valid_interest_rate(3))
+print(bankaccount.is_valid_interest_rate(10))
