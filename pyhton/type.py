@@ -1,26 +1,34 @@
+
+class badbankaccount:
+    def __init__(self):
+        self.balance=0.0
+
+
+
 class bankaccount:
-    MIN_BALANCE = 100
+    def __init__(self):
+        self._balance=0.0
 
-    def __init__(self,owner,balance=100):
-        self.owner=owner
-        self._balance=balance
-        pass
-
-    def deposit(self,amount):
-        if amount>0:
-            self._balance+=amount
-            print(f"{self.owner}'s balance is: {self._balance}")
-
-        else:
-            print("deposit amount should be positive")
-            
-
-    @staticmethod
-    def is_valid_interest_rate(rate):
-        return 0<= rate <=5
+    @property
+    def balance(self):
+        return self._balance
     
-account = bankaccount("kyrie",500)
-account.deposit(200)
+    def deposit(self,amount):
+        if amount <=0:
+            raise ValueError("deposit amount must be positive.")
+        self._balance+=amount
 
-print(bankaccount.is_valid_interest_rate(3))
-print(bankaccount.is_valid_interest_rate(10))
+    def withdraw(self,amount):
+        if amount<=0:
+            raise ValueError("withdraw amount must be positive.")
+        
+        if amount>self.balance:
+            raise ValueError("withdraw amount must be less.")
+        self._balance-=amount
+
+account=bankaccount()
+print(account.balance)
+account.deposit(1.99)
+print(account.balance)
+account.withdraw(1)
+print(account.balance)
