@@ -1,3 +1,5 @@
-//console.log('hello');
-document.getElementById("myH1").textContent='HEllo'
-//window.alert('this is an alert');
+function happybirthday(name) {
+    console.log("happy birthday to")
+}
+
+console.log(greet("Ritik"));
